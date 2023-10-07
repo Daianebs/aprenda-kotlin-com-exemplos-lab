@@ -1,5 +1,5 @@
 // [Template original no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
-// [Template Daiane no Kotlin Playground] (https://pl.kotl.in/X-VlBvB_p)
+// [Template Daiane no Kotlin Playground] (https://pl.kotl.in/KxvTJZvuo)
 
 enum class Nivel { BASICO, INTERMEDIARIO, AVANCADO }
 
@@ -13,8 +13,9 @@ class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
 
     fun matricular(usuario: Usuario, conteudo: ConteudoEducacional) {
         val inscritos = inscritosLista.getOrPut(conteudo) { mutableListOf() }
-        //verifica se já tem uma lista de conteudo criada para adicionar o usuario
+       if (usuario !in inscritos) {
         inscritos.add(usuario)
+    }
     }
 
     fun listarInscritosPorConteudo() {
@@ -43,6 +44,7 @@ fun main() {
     val aluno3 = Usuario("Carina")
 
     formacao.matricular(aluno1, conteudo1)
+     formacao.matricular(aluno1, conteudo1)//não matricula o mesmo usuario no mesmo curso
     formacao.matricular(aluno2, conteudo2)
     formacao.matricular(aluno3, conteudo1)
     formacao.matricular(aluno3, conteudo3)
